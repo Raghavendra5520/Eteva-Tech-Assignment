@@ -1,0 +1,47 @@
+let list1 = ["Hyderabad", "Bangalore", "Chennai", "Delhi", "Pune", "Kolkata"];
+let list2 = ["Gujarat", "Pune", "Rajasthan", "Bangalore", "Vizag", "Delhi"];
+
+const occurrencesOfList1 = {};
+const occurrencesOfList2 = {};
+
+let uniqueNamesOfList1 = [];
+let uniqueNamesOfList2 = [];
+let commonElements = [];
+
+// Unique Elements of List1
+
+for (const name of list2) {
+  occurrencesOfList2[name] = true;
+}
+
+for (const name of list1) {
+  if (!occurrencesOfList2[name]) {
+    uniqueNamesOfList1.push(name);
+  }
+}
+console.log(uniqueNamesOfList1);
+
+// Unique Elements of List2
+for (const name of list1) {
+  occurrencesOfList1[name] = true;
+}
+
+for (const name of list2) {
+  if (!occurrencesOfList1[name]) {
+    uniqueNamesOfList2.push(name);
+  }
+}
+console.log(uniqueNamesOfList2);
+
+// Common Elements of Both Lists
+for (const name of list2) {
+  occurrencesOfList2[name] = true;
+}
+
+for (const name of list1) {
+  if (occurrencesOfList2[name]) {
+    commonElements.push(name);
+    occurrencesOfList2[name] = false;
+  }
+}
+console.log(commonElements);
